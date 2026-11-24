@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101116">
+  <title>Musoffed — Your Music, Your Space</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Musoffed home">
+      <span class="brand-mark">M</span>
+      <span>Musoffed</span>
+    </a>
+
+    <label class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="m16 16 5 5"></path>
+      </svg>
+      <input id="searchInput" type="search" placeholder="Search your music" aria-label="Search your music">
+    </label>
+
+    <div class="header-actions">
+      <button id="importFilesBtn" class="button subtle" type="button">Add files</button>
+      <button id="importFolderBtn" class="button primary" type="button">Import folder</button>
+    </div>
+
+    <input id="fileInput" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.flac" multiple hidden>
+    <input id="folderInput" type="file" webkitdirectory multiple hidden>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <p class="eyebrow">YOUR LIBRARY</p>
+      <button id="allBtn" class="side-link selected" type="button">All tracks</button>
+      <button id="favoritesBtn" class="side-link" type="button">Favorites</button>
+
+      <div class="sidebar-note">
+        <strong>Made for your music.</strong>
+        <p>Import tracks once. Musoffed saves them locally in this browser.</p>
+      </div>
+    </aside>
+
+    <div class="content">
+      <section class="hero">
+        <p class="eyebrow">WELCOME TO MUSOFFED</p>
+        <h1>Every sound has a place.</h1>
+        <p>Bring your music together, explore genres, and listen on your terms.</p>
+        <button id="heroImportBtn" class="button primary" type="button">Add your music</button>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <h2>Browse genres</h2>
+          <button id="clearGenreBtn" class="text-button" type="button">Show all</button>
+        </div>
+        <div id="genreGrid" class="genre-grid"></div>
+      </section>
+
+      <section class="section tracks-section">
+        <div class="section-heading">
+          <div>
+            <h2 id="tracksHeading">All tracks</h2>
+            <p id="trackCount" class="muted">0 tracks</p>
+          </div>
+          <button id="clearLibraryBtn" class="text-button danger" type="button">Clear library</button>
+        </div>
+
+        <div class="track-table">
+          <div class="table-head">
+            <span>#</span>
+            <span>TRACK</span>
+            <span>GENRE</span>
+            <span></span>
+          </div>
+          <div id="trackList"></div>
+        </div>
+
+        <div id="emptyState" class="empty-state" hidden>
+          <h3>Your library starts here.</h3>
+          <p>Import audio files or a music folder to start listening.</p>
+          <button id="emptyImportBtn" class="button primary" type="button">Choose files</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="player">
+    <div class="now-playing">
+      <div id="cover" class="cover">M</div>
+      <div class="track-details">
+        <strong id="playerTitle">Nothing playing</strong>
+        <span id="playerArtist">Choose a track</span>
+      </div>
+      <button id="playerFavorite" class="icon-button favorite" type="button" aria-label="Add to favorites">♡</button>
+    </div>
+
+    <div class="playback">
+      <div class="controls">
+        <button id="shuffleBtn" class="icon-button" type="button" aria-label="Shuffle" title="Shuffle">⇄</button>
+        <button id="previousBtn" class="icon-button" type="button" aria-label="Previous track" title="Previous">⏮</button>
+        <button id="playBtn" class="play-button" type="button" aria-label="Play">▶</button>
+        <button id="nextBtn" class="icon-button" type="button" aria-label="Next track" title="Next">⏭</button>
+        <button id="repeatBtn" class="icon-button" type="button" aria-label="Repeat track" title="Repeat track">↻</button>
+      </div>
+      <div class="timeline">
+        <span id="currentTime">0:00</span>
+        <input id="progressBar" type="range" min="0" max="100" value="0" aria-label="Playback position">
+        <span id="duration">0:00</span>
+      </div>
+    </div>
+
+    <div class="volume">
+      <span aria-hidden="true">◖</span>
+      <input id="volumeBar" type="range" min="0" max="100" value="80" aria-label="Volume">
+    </div>
+    <audio id="audio" preload="metadata"></audio>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

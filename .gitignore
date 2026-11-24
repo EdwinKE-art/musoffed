@@ -1,0 +1,5 @@
+# Do not upload personal or copyrighted music
+music/
+
+.DS_Store
+Thumbs.db
